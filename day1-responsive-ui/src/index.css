@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400&display=swap');
+
+@layer base {
+  :root {
+    --color-primary: 39, 65, 86;
+    --color-secondary: 29, 28, 31;
+    /* secondary #1D1C1F */
+    /* ... */
+  }
+}
+@layer utilities {
+  @variants responsive {
+      .text-shadow {
+        text-shadow: -6px 0 black, 0 6px black, 6px 0 black, 0 -6px black;
+      }
+      .text-shadow-md {
+        text-shadow: 4px 4px 8px black;
+      }
+      .text-shadow-lg {
+        text-shadow: 15px 15px 30px black;
+      }
+      .text-shadow-none {
+        text-shadow: none;
+      }
+
+      .svgStroke {
+        fill: white;
+        stroke: black;
+        stroke-width: 20px;
+        stroke-linejoin: round;
+      }
+  } 
+}
