@@ -4,10 +4,10 @@ import Main from "./layouts/Main";
 
 export default function App() {
   return (
-    <div className=" ">
-      <Header/>
+    <>
+      <Header />
       <Main />
       <Footer />
-    </div>
+    </>
   )
 }
