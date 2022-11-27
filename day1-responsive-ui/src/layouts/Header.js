@@ -3,22 +3,36 @@ import PersonIcon from '../svgs/PersonIcon.js'
 import SearchIcon from '../svgs/SearchIcon.js'
 import ShoppingCart from '../svgs/ShoppingCart.js'
 
+const links = [
+  { id: 0, name: 'Outer', },
+  { id: 1, name: 'Top', },
+  { id: 2, name: 'Skirt', },
+  { id: 3, name: 'Pants', },
+  { id: 4, name: 'Accessories', },
+
+]
 
 export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false)
+
   return (
     <>
-      <header className="flex justify-between items-center px-4 h-16 md:px-16 lg:px-20 xl:px-32">
-        <span className='hidden md:inline-block flex-1'>
-          <ul className='flex gap-6 font-sans font-light '>
-            <li>Outer</li>
-            <li>Top</li>
-            <li>Skirt</li>
-            <li>Pants</li>
-            <li>Accessories</li>
-
+      <header className="flex relative justify-between items-center px-4 h-16 md:px-16 lg:px-20 xl:px-32">
+        <span className={
+          isMenuOpen ?
+            'absolute z-10 inset-0'
+            :
+            `hidden md:inline-block flex-1`
+        }>
+          <ul className='flex gap-2 lg:gap-6 font-sans font-light bg-white 
+          md:flex-row md:w-auto
+           flex-col w-screen h-screen justify-center items-center'>
+            {links.map(link =>
+              <li key={link.id} onClick={() => { isMenuOpen && setIsMenuOpen(prev => !prev) }}>{link.name}</li>
+            )}
           </ul>
         </span>
-        <span className="md:hidden flex-1">
+        <span className="md:hidden flex-1 z-20" onClick={() => { setIsMenuOpen(prev => !prev) }}>
           <img src={process.env.PUBLIC_URL + "icon_menu.png"} alt="" />
         </span>
         <span className="flex-1 md:flex-initial lg:flex-1 text-center text-2xl font-semibold">LOGO</span>
@@ -34,7 +48,7 @@ export default function Header() {
 
           <ShoppingCart />
           <button className='rounded-full bg-primary text-white hidden lg:flex
-           px-5 py-2 border border-primary  gap-2 justify-center items-center' >
+           px-5 py-2 border border-primary  gap-2 justify-center items-center whitespace-nowrap' >
             <PersonIcon />
             Sign in</button>
         </span>
